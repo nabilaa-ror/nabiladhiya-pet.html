@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop</title>
+    <style>
+        *{
+    scroll-behavior: smooth;
+}
+
+:root {
+    --wrn1: rgb(209, 186, 166);
+    --wrn2: rgb(255, 255, 255);
+    --wrn3: #ffc669;
+    --wrn4: #3e2723;
+    --wrn5: #efdccd;
+    --wrn6: #f9f1eb;
+    --wrn7: #c7a690;
+    --wrn8: #f4aa3c;
+    --shadow: 0 10px 15px rgba(0,0,0,0.25);
+    --shadow2: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+body {
+    background-color: var(--wrn5);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.nav {
+   background-color: var(--wrn8) ;
+   margin: 0;
+   padding: 20px;
+   justify-content: center;
+   position: fixed;   
+   top: 0;            
+   left: 0;
+   width: 100%;       
+   z-index: 1000;
+}
+
+.nav li {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--wrn2);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: var(--wrn1);
+}
+
+#beranda {
+    position: relative;  
+    width: 100%;
+    height: 580px;
+    padding-top: 180px;
+    text-align: center;
+    overflow: hidden;  
+}
+
+.beranda-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.pinimg.com/originals/7f/91/ef/7f91ef74ace96a27cba3ae2c6a907de1.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    z-index: -1; 
+    transform: scale(1.1); 
+}
+
+#beranda h1 {
+    padding-top: 100px;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--wrn6);
+    text-shadow: var(--shadow2);
+    margin-bottom: 15px;
+}
+
+#beranda p {
+    font-size: 20px;
+    color: var(--wrn6);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-shadow: var(--shadow2);
+}
+
+#produk {
+    text-align: center; 
+}
+
+
+#produk img {
+    width: 150px;
+    height: 140px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+#produk h2, #layanan h2, #form h2 {
+    color: var(--wrn4);
+    background: var(--wrn3);
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    margin-top: 80px;
+}
+
+
+.prdk, .prdk2 {
+    background-color: var(--wrn6);
+    width: 1400px;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 1500px;
+    display: flex;
+    align-items: center;
+}
+
+.prdk2 {
+    margin-top: -70px;
+}
+
+.prdk div, .prdk2 div {
+    background-color: var(--wrn2);
+    width: 200px;
+    border: 5px solid var(--wrn6);
+    border-radius: 5px;
+    text-align: center;
+    padding-bottom: 10px;
+    transition: 0.3s;
+}
+
+.prdk div:hover, .prdk2 div:hover {
+    transform: scale(1.08);
+    box-shadow: var(--shadow2);
+}
+
+.prdk p, .prdk2 p {
+    margin: 5px;
+    color: var(--wrn4);
+    font-weight: bold;
+}
+
+.kotakinfo{
+    margin: 0 auto;
+}
+
+
+
+#layanan {
+    text-align: center;
+}
+
+.groming, .konsul, .hotel {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+}
+
+.groming:hover, .konsul:hover, .hotel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.28);
+}
+
+.groming img, .konsul img, .hotel img {
+    width: 45%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.konsul {
+    flex-direction: row-reverse;
+}
+
+form {
+    background-color: var(--wrn2);
+    width: 95%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: var(--wrn4);
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--wrn7);
+}
+
+button {
+    background-color: var(--wrn3);
+    color: var(--wrn4);
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ffb347;
+    transform: scale(1.05);
+}
+
+footer{
+    background-color: var(--wrn8);
+    color: var(--wrn2);
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul class="nav">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#layanan">Layanan</a></li>
+            <li><a href="#form">Pemesanan Layanan</a></li>
+        </ul>
+    </nav>
+    </header>
+    
+    <section id="beranda">
+        <div class="beranda-background"></div>
+        <h1>Selamat Datang di Pet Shop Ceria</h1>
+        <p>Pet Shop Ceria adalah tempat penyedia kebutuhan lengkap untuk hewan peliharaan. Kami percaya bahwa hewan adalah keluarga, dan mereka berhak mendapatkan yang terbaik</p>
+    </section >
+
+    <section id="produk">
+        <h2>Produk Kami</h2>
+        <div class="prdk">
+            <div class="ms">
+                <img src="https://down-id.img.susercontent.com/file/fb8b2afd0d37bb262898d7a1285401c2">
+                <p>Me-o Snack</p>
+                <p>RP. 19.699,00</p>
+            </div>
+            <div class="mw">
+                <img src="https://s4.bukalapak.com/bukalapak-kontenz-production/content_attachments/61079/original/makanan_kucing_terbaik.jpg">
+                <p>Whiskas Adult</p>
+                <p>RP. 60.000,00</p>
+            </div>
+            <div class="ma">
+                <img src="https://vmpetsmart.com/wp-content/uploads/2021/08/Pedigree-PRO-Expert-Nutrition-Dry-Dog-Food-Food-for-Active-Adult-Dogs-18-Months-Onwards-Chicken-Flavor-3kg-Pack.jpg">
+                <p>Pedegree Pro</p>
+                <p>RP. 82.000,00</p>
+            </div>
+            <div class="mb">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.bKohGxtaFahn5nN4e8sa4wHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1,3&o=7&rm=3">
+                <p>Vitakraft African</p>
+                <p>RP. 54.500,00</p>
+            </div>
+            <div class="mi">
+                <img src="https://pvimages-prod.azureedge.net/SCM07200_p1.jpg">
+                <p>Goldfish</p>
+                <p>RP. 13.487,50</p>
+            </div>
+            <div class="mk">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.OXxpwqis1PXkCKLdcstuiQHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1,3&o=7&rm=3">
+                <p>Vitakraft Menu Fital</p>
+                <p>RP. 45.650,00</p>
+            </div>
+        </div>
+        <div class="prdk2">
+            <div class="ph">
+                <img src="https://th.bing.com/th/id/OIP.I7ofwDqZQ_4TIOhhijWW-gHaHa?w=215&h=215&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3">
+                <p>Popok Hewan</p>
+                <p>RP. 61.376,00</p>
+            </div>
+            <div class="ps">
+                <img src="data:image/webp;base64,UklGRi4MAABXRUJQVlA4ICIMAACQPACdASr0APMAPp1KoEylpCMiJHbY6LATiWdu4XM6HXiQ9zAYfTdt8ud0b2vfr55Qj7TuzF/VeA9072qmw/5D9dPYC9sPu/nT/b+aPBieGx9v/037F/AN+dP9l9xnyf/+Hl9+tfYK6R37h+zN+1Qx0KLK2aUFPQS2aBSOAXNcnAcY+t8VVjiof8aVNVY89p1Qvx2ROvUbzJSErblBT0EtlkRg5/
+                Kig4YAQ0IwaCWzSgps0/K5Nf9STigEWcEjytL6g4BssrZpQU1j1q8hMtvv9PTq1YBmJZ7J5oSInArhMZvnZAUsOJqVs0oJpZTIfYUZbw1GAody0/N13oD9wFJbf7LztKCnoH1U/KG7P7/StKBXmYuq6ye/LCELg15APOoUq/n85LZpQTByfMvSZ/j55nfU+LaA+lfk8uiNhv+HwReV2ezygp6CVAGRZH/wPjb1FONe4V5ayxajEad5s2FbNKCmiA3D2mzOQ+K6mCAiAYRPcxaH6
+                lRqmb5tdpWghlNRFlbK1EIWjMJWcYixMc2Apj/B+HbinHcl4rX9u9jDRoiytmfuCzjc/oquPR+t0imFfhPro2f75SWziN5w+xt3H8/5vhRZWsWwwnDAIjo3JAk3/7+wyvX27zl5CiytmlBT0EtmlBT0EtmlBTxQAP7/NiAEIkAR3mLbCL6mR9zJjf1GQnW+fxp9Wn8tpNT7oLqmP0d3miRvi9rsxcLYcntNKVBz7Q9Sk1Qx4M6n9M1KN81kBGvuvz/5Uask2nAbCn1u35jcps4G
+                EDjDIH4yOGXqq5l24qYIrZ+vN490o6ay9hIb8PJBSTavnxF1OaAH2nl6HnLH0wFdZNB1UxvTLB+Is1WavFFJxz3zriuPspJKNSfoPQ1VtMC5pMx3tvCgbh9rD0crUQOVoOHBPajY799YSu4wcbLkptTTn7sO9TmgPLjPhKeVz5DYN7qIxtqq60niYxCyo9ezDo71XcatImGTlHLDOjKz3tKIyHewiDzA3JyBM9/4QbvIRNhhzc4vqYcK0hG9aYDMjyCYpQ+vWj2rgaVMcPiilc4
+                On2w4G9mXwlB5mnalyB2KBeGoQjR9z1CXOu8zaGhVjPDMQHjL56vrfb1YBN1JzuyKVSlP5bHG9zpfcPAw7eEr5SvaCPu7tdJno8SL3wgw//vrqLZ95ZKJQs28RPIUoDhxUPSZyVu4WTn9tgfh65/Xz/I7n8yKdT1DnSMC2FIFHmYgmrE3rb2saHKjd5fG0RnFEx5HEYnMqvbZbTslxnDgbGFSN+G8Mn0XWmH/w+amecPFB+RP+BJbjyvFYgCBkMNe1qmpey1b5zXkUXl41Pm3//
+                PzB/C6y9Y39ONNIz/QDprEsTlJw6GmkWZRc5bE9K+ntFjW1RnqwptF1uXXigy+HTAoYZdEChPncqNNoZ0LNZZgsbN9TWM+0ZkPrE/FLSo0Z97zhxhk7Rt6NeIyGJgNIUdsdm7M7/87Yhq/Uv1/rArl0A1BTOLfsg+rakv47EKedSYQnRqdXLp0/X0xiAzSNLqaiENQgwVNAsZvIGKQKtoS15SHG086mh0q8PtINhJcAHVlr5skm2A1qJGF70XNExn3LU3oQ2lSXvkz3Jnmk1qn/
+                HhMjtizwPBMDBM8cZXhX+Ltyk2426d9UFYLNECasvgoO7PBPVq4jJU1sCMEtqNxisR6AzE/9RpnLfQsoxahkaXSlGgrHORaiAcyrqSpV3gUpZAI6V+Q3Yv5qNqXxOP5u9KRRJeGP6vDQ0ih35a98Nm+mdJZMjciFmq1BqMRKAG17qqnXniqfM+mCv5QaaBCsd+wbof+1jlDq+HyCe9JkDOOa2c3vCxrItuFsgBfMKkflvPNZU7VfV7aofJBgGtgzv8Qm4qov/D6TBNxiQ6fxPfQ
+                bdfVeQgBfKMKa2bqcj1Dc17/EfTOXpDdWizkAidhKT2vs1pfGYlBzk+IKiw7AKd/vMkAysQTJLFy5/uBpUiq9XPWQpD4o73txPIEoV86x9o9fBckZ3AmKmTbbjFHPlhMK2tRR6jUg37rHcTNcq/CkRrZgSIZ8woNzKvtdaEoD3gBGSguNAjxKmOyNpXkBIJ+3qY4vfuAl6Kw3E7Kh6ulGKTD0ZzyqhQ1bemrpjkMstumsOKP2QWSo5SnmqR/YMeF2vei+7gnj0V3bd99VLvBluh
+                NiXmjmYIsdoGIlfEbVbQ87lN0m5cCBQz8rXRHjGSJMp9yt0RQVnIf+uovbs6Cg8AZDalkveEmKNStSxuWM0kmbsZRFyiBOgcDyXVXb6XCzHZFOPx/ys9XimQdxxlKzdfc4U0dMD/Ghe/Z2TRvJH+I6zrBqfDFgo/BEHE3+wQWyVbA13MuL6uGsA7nWItQarnFEUGkQrxw6Fm5sq8yLLFAN7I4Ivmd0/jmWpBSdnDbT6/hiRERTuzOLgftqzSWa2iH7N9G1TDIoM6AMfmvtfEV4l
+                xH8G+XkA8KwIpP67ZTiCuX1W2Dd46xj6jo8OI4d/loAilfIaad3YiKmizeS361ysERaM3r2NdsoHQHVVSLECpXEBMH+zMsWcuWOjgNN0BNfXuG3K4uqi1AYwaznbsCstzEpgVhNmaNRbvGUSC0GKqkVlDv5Uv6BWmOD/zVFptNWYud9s91dZvfjK+iGAS4//65QW5f4u+re5PJhkrvHXn+OYQv5gjV3vUIzdJRpZqpG4Qfqcjjnp096b9v2BYjAipT0tBeS3Q9fp/5UxJaX+E3T
+                26LsPeP6G425cU6ZqAqwE+pOdjQRuDasmda6nPsxAbAZIYEk8XtLdhk1Lw1sPOfxKwkRWXO/kEk2FyUv3TIk5jqFEEwNFGM9WJalRh0SZYNSc16eIikmvhM5nvtIlj/l7Y3sYSQ1E2ayQ3A6wbuxtMQ/56blbm2umTAJVRK9H2V9lQG6LcRTx9na05LfGG4ypVTwU5gd+oHOvBz/kyy5QEDdjAUUFpLsamuV1Lv/1NpjZIgkh6++2MWDqebxUBRd2a8WXyicMe93Ot3QvOaNJqr
+                W8U/lH1Rr0U4c7zgdYA2+y3EuxvpDq8PzdUFMzGwxLSj9X91zWQX1v8kdXe2ukacnueCmFnXMUuHBysjg2JSzSxFba2J/d1UXvOdLurkG4zUDnKgzVj0E4E77vJgxz8BMhDAWNoXS9eA7eSm1wlBU1AqjAeWI2UPROZSpelxzmdBQzOH3rRf9ySL2fgQ/g7tvH6MQjlyHV0el5qYPBQzb2pwdcTo2uilMOck6EKYITDcDgrDRccwYdzk/Bqd21D/70JcIzfSe3f4nF/AnlyAEUR
+                Df5EiYz3RUwETlu7+g7fyfFYPxJ8xPTtybixGQ2lGSmjGTaucwgGKo+ZIFVlVoRfAmS8Hn6af2e/f+lokzq9SxYAOBlMM9tit6ZF10lf3vTNC1dDq/NmwYgHz9MVFyH3y4yHdh6z1TEVPoCqgjVKbEd1+OggjJLisOEvgfisKaZuzgcG0WClZjH89/U5rBZ+VCPzGO/61sggef1zvcZruil6geQu1nk+shEdrVsHyb8C3xZ0q5KSVxbbjKMIEEbkLx/3OwBevhaOEbTBGuTKUkv
+                WMGE1aN9E/ATRzqr3wE+Y86nZ/7F2e9bUfCRvn14pyxkQG1zjidyCDFIJ68a5al64739uY7mm/m7dOcsHJSN3OlOglhYwIc6NMygBM/ZlWTKXv/eI4u/hUJATnBg8Ub2U/uh7ULkb84gsuO4hUTTbojsjqq+1ucWZb9OUsf7dlsyr8NBZwtPu4u8Wcg3DQWhUS93No7atnHkHaudjuTVa2VNNJwflAauElJNfhL0U1z+17wXiGcXkK8tq7QPH7jB6Sd+PtauSB0mZxWlHyie1Am
+                IJewx1ES9Vi1654EmwB9kCHtKSFEdffLfp1/8rQsjlDF9Ih1D1bX4b9QxI2toKTWGdE5T2+jPchn9+fefI/0y7Bk8yY4uQRaaJ87SfyILm4VuG25TarLuRd/b1skPc5gerBY0CbvKscpweRWkteLu1cnUWyHScopJeycLKhj2sEp7uGG0D8qg/OsyoqTx0rEXZhoQqgTQhoWYeM4vio7buYvfQzx2FGCDGqTbwJfrb+SilKSo4mSPE/sS9OxkR83ohHAzbFcoyDVvFhsoPgAWfycKSUtAZKVmjAAAAA">
+                <p>Pet Shampo</p>
+                <p>RP. 43.730,00</p>
+            </div>
+            <div class="sh">
+                <img src="https://th.bing.com/th/id/OIP.Rdc5YoEXNQ5xmp40l8eQVQHaHa?w=209&h=209&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3">
+                <p>Sisir Anjing & Kucing</p>
+                <p>RP. 24.649,00</p>
+            </div>
+            <div class="gk">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.8jv50TxaciIt14E1cnPJawHaHa?pid=ImgDet&w=184&h=184&c=7&dpr=1,3&o=7&rm=3">
+                <p>Gunting Kuku Hewan</p>
+                <p>RP. 16.450,00</p>
+            </div>
+            <div class="kh">
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98x-llztr6org6ujdc">
+                <p>Kalung Hewan</p>
+                <p>RP. 15.650,00</p>
+            </div>
+            <div class="pc">
+                <img src="https://www.petsplace.com.my/prodimages/petcargoG.jpg">
+                <p>Pet Cargo</p>
+                <p>RP. 246.500,00</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="layanan">
+        <h2>Layanan Tersedia</h2>
+        <div class="groming">
+            <img src="https://img-cdn.medkomtek.com/z8EI-1OLuW8XJIyP-vVPCAZu9TI=/0x0/smart/filters:quality(100):format(webp)/article/qKj_I1WnH0_PjmoyZQRTt/original/1673150337-Agar%20Anabul%20Bersih%20dan%20Sehat,%20Ini%20Cara%20Grooming%20Anjing.jpg">
+            <div class="kotakinfo">
+                <h3>GROOMING</h3>
+                <p>Perawatan bulu dan kebersihan hewan oleh tenaga profesional</p>
+            </div>
+        </div>
+        <div class="konsul">
+            <img src="https://asset.kompas.com/crops/zuu3_1aRfRF9nWfoowYN3GKbfIE=/0x0:612x408/1200x800/data/photo/2023/07/25/64bf6e491f902.jpeg">
+            <div class="kotakinfo"> 
+                <h3>KONSULTASI DOKTER</h3>
+                <p>Konsultasi langsung dengan dokter hewan berpengalaman</p> 
+            </div>
+        </div>
+        <div class="hotel">
+            <img src="https://live.staticflickr.com/65535/49674721338_367533a444_z.jpg  x">
+            <div class="kotakinfo"> 
+                <h3>PENGINAPAN HEWAN</h3>
+                <p>Penginapan yang nyaman bagi hewan kesayangan</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="form">
+        <h2>Formulir Pembookingan Layanan</h2>
+        <form id="BookingForm">
+            <label for="nama">Nama Lengkap:</label><br>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required><br>
+
+            <label for="telepon">Nomor Telepon:</label><br>
+            <input type="tel" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="contoh@gmail.com"><br>
+
+            <label for="layanan">Pilih Layanan:</label><br>
+            <select id="layanan" name="layanan" required>
+                <option value="">-- Pilih Jenis Layanan --</option>
+                <option value="grooming">Grooming</option>
+                <option value="konsultasi">Konsultasi Dokter Hewan</option>
+                <option value="hotel">Penginapan Hewan</option>
+            </select><br>
+
+            <label for="tanggal">Tanggal Booking:</label><br>
+            <input type="date" id="tanggal" name="tanggal" required><br>
+
+            <label for="waktu">Waktu Booking:</label><br>
+            <input type="time" id="waktu" name="waktu" required><br>
+
+            <label for="pesan">Catatan Tambahan:</label><br>
+            <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan permintaan khusus atau informasi tambahan..."></textarea><br>
+
+            <button type="submit">Kirim Booking</button>
+        </form>
+        <p id="pesanTerimakasih"></p>
+        <p id="pesanBatal"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pet Shop Ceria | Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+    var form = document.getElementById("BookingForm");
+    var pesanTerimakasih = document.getElementById("pesanTerimakasih");
+    var pesanBatal = document.getElementById("pesanBatal");
+    
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var nama = document.getElementById("nama").value;
+        var tanggal = document.getElementById("tanggal").value;
+        var waktu = document.getElementById("waktu").value;
+        var layanan = document.getElementById("layanan").value;
+        
+        var konfirmasi = confirm("Apakah Anda yakin ingin melakukan pembookingan untuk layanan ini?");
+        if (konfirmasi) {
+            pesanTerimakasih.innerHTML =
+            "Terima kasih <b>" + nama + "</b> karena telah melakukan pembookingan untuk layanan kami.";
+            pesanBatal.innerHTML = "";
+        } else {
+            pesanBatal.innerHTML = "Reservasi dibatalkan";
+            pesanTerimakasih.innerHTML = "";
+        }     
+    });
+    </script>
+</body>
+</html>
